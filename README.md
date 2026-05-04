@@ -12,9 +12,13 @@ For the delivery company's first day the package ID's range from 1-40.
 
 <img width="500" height="600" alt="image" src="https://github.com/user-attachments/assets/63f711e4-a3b5-43fb-a71e-f8b00d85c077" />
 
+
+
 Screenshot 2: The End of Day Log Tab tracks the total mileage from each truck as well as all deliveries as well as their delivered time.
 
 <img width="500" height="600" alt="image" src="https://github.com/user-attachments/assets/8cae6c73-7cab-4d1c-9a7c-b38e911c1f9a" />
+
+
 
 Screenshot 3: Status Check Tab can check the status of any package at a specific point in time of the day:
 
