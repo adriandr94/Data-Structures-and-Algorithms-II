@@ -5,7 +5,7 @@ The 40 packages themselves have multiple constraints ranging from having a deliv
 or special notes like having to be delivered together with other packages. 
 Using multiple data structures like lists, a dictionary and a hash table (built from lists of lists), I was able
 to create a program that is both scalable and modular by also using object oriented programing to create classes and
-instances of those classes. The algorithm I chose for this project was nearest-neighbor.
+instances of those classes. The algorithm I chose for this project was nearest-neighbor with a runtime complexity of O(N^2).
 The screen shots below show the completed User Interface created using Tkinter with Python.
 
 Screenshot 1: The Tracking Tab that can track any of the 40 packages by having the User type in the package ID number.
