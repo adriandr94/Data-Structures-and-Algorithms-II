@@ -15,7 +15,7 @@ For the delivery company's first day the package ID's range from 1-40.
 
 
 
-Screenshot 2: The End of Day Log Tab tracks the total mileage from each truck as well as all deliveries as well as their delivered time.
+Screenshot 2: The End of Day Log Tab tracks the total mileage from each truck as well as all deliveries and their delivered time.
 
 <img width="500" height="600" alt="image" src="https://github.com/user-attachments/assets/8cae6c73-7cab-4d1c-9a7c-b38e911c1f9a" />
 
