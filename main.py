@@ -162,13 +162,13 @@ def print_status_time(userTime):
         pkgDelivered = datetime.strptime(value.DeliveryTime, "%I:%M %p")
         if inputTime < pkgLoaded:
             status_list.append(
-                f"Package: {index}, Status: At Hub -- {inputTime.strftime("%I:%M %p")} --")
+                f"Package: {index}, Truck ID: In Preparation, Driver ID: In Preparation, Address: {value.Address}, {value.City}, {value.State}, {value.ZipCode}, Deadline: {value.Deadline}, Status: At Hub -- {inputTime.strftime("%I:%M %p")} -- \n" + "----------------------------------------------------------------------------------------------------------------")
         elif inputTime < pkgDelivered:
             status_list.append(
-                f"Package: {index}, Status: In Transit -- {value.LoadTime} --")
+                f"Package: {index}, Truck ID: {value.TruckID}, Driver ID: {value.DriverID}, Address: {value.Address}, {value.City}, {value.State}, {value.ZipCode}, Deadline: {value.Deadline}, Status: In Transit -- {value.LoadTime} --\n" + "----------------------------------------------------------------------------------------------------------------")
         else:
             status_list.append(
-                f"Package: {index}, Status: Delivered at -- {value.DeliveryTime} --")
+                f"Package: {index}, Truck ID: {value.TruckID}, Driver ID: {value.DriverID}, Address: {value.Address}, {value.City}, {value.State}, {value.ZipCode}, Deadline: {value.Deadline}, Status: Delivered at -- {value.DeliveryTime} --\n" + "----------------------------------------------------------------------------------------------------------------")
     return "\n".join(status_list)
 
 
@@ -203,7 +203,7 @@ style.map("TNotebook.Tab",
           background=[("selected", "#3F404B")],
           foreground=[("selected", "#FFFFFF")])
 
-notebook.add(tab1, text="Tracking",)
+notebook.add(tab1, text="Tracking")
 notebook.add(tab2, text="EOD Log")
 notebook.add(tab3, text="Status Check")
 notebook.pack(expand=True, fill='both')
@@ -324,7 +324,7 @@ status_btn.config(font=('Arial'), fg="#FFFFFF",
 status_btn.grid(row=1, column=3)
 
 label7 = scrolledtext.ScrolledText(
-    tab3, width=65, height=20, font=('Arial', 10), background="#757575", fg="#FFFFFF")
+    tab3, width=67, height=30, font=('Arial', 10), background="#757575", fg="#FFFFFF")
 label7.grid(row=3, column=0, columnspan=4)
 label7.config(state='disabled')
 

@@ -15,6 +15,8 @@ def load_HashTable(filepath):
     df['Status'] = 'At hub'
     df['Loaded'] = ''
     df['Delivered'] = ''
+    df['Truck ID'] = ''
+    df['Driver ID'] = ''
     for index, row in df.iterrows():
         pkgID = row['PackageID']
 
@@ -29,7 +31,9 @@ def load_HashTable(filepath):
             Notes=row['Notes'],
             Status=row['Status'],
             LoadTime=row['Loaded'],
-            DeliveryTime=row['Delivered']
+            DeliveryTime=row['Delivered'],
+            TruckID=row['Truck ID'],
+            DriverID=row['Driver ID']
         )
         WGUPS[pkgID] = newPackage
 

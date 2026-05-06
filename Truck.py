@@ -20,6 +20,8 @@ class Truck:
             self.capacity.append(WGUPS[pkgID])
             WGUPS[pkgID].LoadTime = self.base_time.strftime("%I:%M %p")
             WGUPS[pkgID].Status = "In Transit"
+            WGUPS[pkgID].TruckID = self.truckID
+            WGUPS[pkgID].DriverID = self.driver
 
     def __str__(self):
         ppackages = [pkg.ID for pkg in self.capacity]
