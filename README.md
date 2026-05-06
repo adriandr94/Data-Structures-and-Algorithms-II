@@ -23,7 +23,8 @@ Screenshot 2: The End of Day Log Tab tracks the total mileage from each truck as
 
 Screenshot 3: Status Check Tab can check the status of any package at a specific point in time of the day:
 
-<img width="500" height="600" alt="image" src="https://github.com/user-attachments/assets/b71b3281-509a-4cf0-add9-05f96314c82d" />
+<img width="486" height="570" alt="image" src="https://github.com/user-attachments/assets/42578d7e-0c16-405e-9712-c3bd074889ee" />
+
 
 
 
