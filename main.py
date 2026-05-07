@@ -52,11 +52,6 @@ def get_distance(index1, index2, ListOfLists):
 # instantiating address dictionary with string address as key and index as value:
 address_dictionary = address_maping(address_data)
 
-
-# updating status of packages not arriving to hub until 9:05. Easily done using the Hash Table:
-for pkg in [6, 25, 28, 32]:
-    WGUPS[pkg].Status = 'DELAYED'
-
 # Note all trucks have to be manually loaded by entering just the package ID numbers as shown below:
 # Truck 1 loaded
 truck1.load([1, 4, 8, 13, 14, 15, 16, 19, 20,
@@ -148,9 +143,14 @@ delivery(truck3)
 def print_status_time(userTime):
 
     inputTime = datetime.strptime(userTime, "%I:%M %p")
+    delayedTime = datetime.strptime("9:05 AM", "%I:%M %p")
+    wrongAddressTime = datetime.strptime("10:20 AM", "%I:%M %p")
+
     # needed to create another list and change return values to appending to status_list just to
     # print into the GUI using scrolltext widget.
     status_list = []
+    delayed_pkgs = [6, 25, 28, 32]
+    wrong_address = [9]
     for index, value in WGUPS.items():
         # program crashes when parsing packages without a load/delivery time:
 
@@ -161,8 +161,15 @@ def print_status_time(userTime):
         pkgLoaded = datetime.strptime(value.LoadTime, "%I:%M %p")
         pkgDelivered = datetime.strptime(value.DeliveryTime, "%I:%M %p")
         if inputTime < pkgLoaded:
-            status_list.append(
-                f"Package: {index}, Truck ID: In Preparation, Driver ID: In Preparation, Address: {value.Address}, {value.City}, {value.State}, {value.ZipCode}, Deadline: {value.Deadline}, Status: At Hub -- {inputTime.strftime("%I:%M %p")} -- \n" + "----------------------------------------------------------------------------------------------------------------")
+            if index in delayed_pkgs and inputTime < delayedTime:
+                status_list.append(
+                    f"Package: {index}, Truck ID: In Preparation, Driver ID: In Preparation, Address: {value.Address}, {value.City}, {value.State}, {value.ZipCode}, Deadline: {value.Deadline}, Status: DELAYED. Expected to Arive to hub at 9:05 AM -- {inputTime.strftime("%I:%M %p")} -- \n" + "----------------------------------------------------------------------------------------------------------------")
+            elif index in wrong_address and inputTime < wrongAddressTime:
+                status_list.append(
+                    f"Package: {index}, Truck ID: In Preparation, Driver ID: In Preparation, Address: 300 State St, {value.City}, {value.State}, {value.ZipCode}, Deadline: {value.Deadline}, Status: At Hub -- {inputTime.strftime("%I:%M %p")} -- \n" + "----------------------------------------------------------------------------------------------------------------")
+            else:
+                status_list.append(
+                    f"Package: {index}, Truck ID: In Preparation, Driver ID: In Preparation, Address: {value.Address}, {value.City}, {value.State}, {value.ZipCode}, Deadline: {value.Deadline}, Status: At Hub -- {inputTime.strftime("%I:%M %p")} -- \n" + "----------------------------------------------------------------------------------------------------------------")
         elif inputTime < pkgDelivered:
             status_list.append(
                 f"Package: {index}, Truck ID: {value.TruckID}, Driver ID: {value.DriverID}, Address: {value.Address}, {value.City}, {value.State}, {value.ZipCode}, Deadline: {value.Deadline}, Status: In Transit -- {value.LoadTime} --\n" + "----------------------------------------------------------------------------------------------------------------")
@@ -324,7 +331,7 @@ status_btn.config(font=('Arial'), fg="#FFFFFF",
 status_btn.grid(row=1, column=3)
 
 label7 = scrolledtext.ScrolledText(
-    tab3, width=67, height=30, font=('Arial', 10), background="#757575", fg="#FFFFFF")
+    tab3, width=67, height=30, font=('Arial', 9), background="#757575", fg="#FFFFFF")
 label7.grid(row=3, column=0, columnspan=4)
 label7.config(state='disabled')
 
